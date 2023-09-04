@@ -45,3 +45,7 @@ public class miConexion {
         return conexion;
     }
 }
+/*
+public Connection getConexion() throws SQLException{
+        if(con == null){
+*/

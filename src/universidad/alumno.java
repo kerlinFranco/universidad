@@ -16,10 +16,10 @@ public class alumno {
     private int dni;
     private String apellido;
     private String nombre;
-    private String fNacimiento;
+    private LocalDate fNacimiento;
     private boolean estado;
     
-     public alumno(int idAlumno, int dni, String apellido, String nombre, String fNacimiento, boolean estado) {
+     public alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fNacimiento, boolean estado) {
         this.idAlumno=idAlumno;
         this.dni = dni;
         this.apellido = apellido;
@@ -28,7 +28,7 @@ public class alumno {
         this.estado = estado;
     }
 
-    public alumno(int dni, String apellido, String nombre, String fNacimiento, boolean estado) {
+    public alumno(int dni, String apellido, String nombre, LocalDate fNacimiento, boolean estado) {
         this.idAlumno=-1;
         this.dni = dni;
         this.apellido = apellido;
@@ -56,7 +56,7 @@ public class alumno {
         return nombre;
     }
 
-    public String getfNacimiento() {
+    public LocalDate getfNacimiento() {
         return fNacimiento;
     }
 
@@ -64,9 +64,34 @@ public class alumno {
         return estado;
     }
 
+    public void setIdAlumno(int idAlumno) {
+        this.idAlumno = idAlumno;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setfNacimiento(LocalDate fNacimiento) {
+        this.fNacimiento = fNacimiento;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+    
+    
     @Override
     public String toString() {
-        return "idAlumno=" + idAlumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", estado=" + estado ;
+        return "idAlumno=" + idAlumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", estado=" + estado + fNacimiento ;
     }
     
     

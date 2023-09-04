@@ -12,6 +12,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -84,7 +86,12 @@ public class Universidad {
 //        } catch (SQLException ex) {
 //            JOptionPane.showMessageDialog(null,"Error al conectar");
 //        }
-        
+        alumno alu2= new alumno(45098213,"Franco", "Joan",LocalDate.of(1995,8,20),true);
+//        new Universidad().conectar(alu2);
+       miConexion conexion=new miConexion("jdbc:mariadb://localhost:3306/universidadulp","root","");
+       AlumnoData aluData= new AlumnoData(conexion);
+       aluData.guardarAlumno(alu2);
+       
         
     }
     public void conectar(alumno alu){
