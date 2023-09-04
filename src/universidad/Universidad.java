@@ -5,6 +5,8 @@
  */
 package universidad;
 
+import conexion.AlumnoData;
+import conexion.miConexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,9 +27,9 @@ public class Universidad {
      */
     public static void main(String[] args) {
         
-        try {
-            Class.forName("org.mariadb.jdbc.Driver");
-            Connection conexion=DriverManager.getConnection("jdbc:mariadb://localhost:3306/universidadulp","root","");
+//        try {
+//            Class.forName("org.mariadb.jdbc.Driver");
+//            Connection conexion=DriverManager.getConnection("jdbc:mariadb://localhost:3306/universidadulp","root","");
             
 //            String alu1="INSERT INTO `alumno`( `dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) "
 //                    + "VALUES(38018311,'Kerlin','Franco',1994-08-08,1)";
@@ -72,18 +74,24 @@ public class Universidad {
 //             System.out.println("Nota "+notas.getInt("nota"));
 //             System.out.println("-----------------------------");
 //         }
+//        
+//         String del="DELETE FROM inscripcion WHERE inscripcion.idAlumno=5 AND inscripcion.idMateria=4";
+//         PreparedStatement ps=conexion.prepareStatement(del);
+//         ps.executeUpdate();
+//         
+//        } catch (ClassNotFoundException ex) {
+//            JOptionPane.showMessageDialog(null,"Error al cargar driver");
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,"Error al conectar");
+//        }
         
-         String del="DELETE FROM inscripcion WHERE inscripcion.idAlumno=5 AND inscripcion.idMateria=4";
-         PreparedStatement ps=conexion.prepareStatement(del);
-         ps.executeUpdate();
-         
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null,"Error al cargar driver");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Error al conectar");
-        }
         
-        
+    }
+    public void conectar(alumno alu){
+       miConexion conexion=new miConexion("jdbc:mariadb://localhost:3306/universidadulp","root","");
+       AlumnoData aluData= new AlumnoData(conexion);
+       aluData.guardarAlumno(alu);
+       
     }
     
 }
