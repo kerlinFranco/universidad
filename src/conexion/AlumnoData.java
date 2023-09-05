@@ -122,5 +122,28 @@ public class AlumnoData {
                     System.out.println(""+ex);
                 }
             return alumnos;
+    }
+    //borrar de manera logica
+    
+   public void borrarAlumno(int id){
+       String upd="UPDATE alumno SET estado=0 WHERE idAlumno=?";
+       PreparedStatement ps;
+        try {
+            
+            ps = con.prepareStatement(upd);
+            ps.setInt(1, id);
+            int registro= ps.executeUpdate();
+            if(registro==0){
+            System.out.println("No se encontro el empleado");
+            }else{
+            System.out.println("Empleado borrado");
+       }
+        } catch (SQLException ex) {
+            Logger.getLogger(AlumnoData.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+       
+   }
+    
+    
 }

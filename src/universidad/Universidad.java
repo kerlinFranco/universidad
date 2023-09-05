@@ -94,7 +94,8 @@ public class Universidad {
     public void conectar(alumno alu){
        miConexion conexion=new miConexion("jdbc:mariadb://localhost:3306/universidadulp","root","");
        AlumnoData aluData= new AlumnoData(conexion);
-       aluData.guardarAlumno(alu);
+//       aluData.guardarAlumno(alu);
+       aluData.borrarAlumno(8);
        
     }
     
