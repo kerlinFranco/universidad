@@ -29,6 +29,8 @@ public class miConexion {
         this.pasword = pasword;
     }
     
+    //Carga los drivers y conecta con la base de datos
+    
     public Connection buscarConexion(){
         if(conexion==null){
             try {
@@ -53,7 +55,4 @@ public class miConexion {
     
     
 }
-/*
-public Connection getConexion() throws SQLException{
-        if(con == null){
-*/
+

@@ -86,14 +86,10 @@ public class Universidad {
 //        } catch (SQLException ex) {
 //            JOptionPane.showMessageDialog(null,"Error al conectar");
 //        }
-        alumno alu2= new alumno(45098213,"Franco", "Joan",LocalDate.of(1995,8,20),true);
-//        new Universidad().conectar(alu2);
-       miConexion conexion=new miConexion("jdbc:mariadb://localhost:3306/universidadulp","root","");
+       alumno alu2= new alumno(45098333,"Francisco", "Juan",LocalDate.of(1995,8,30),true);
+       new Universidad().conectar(alu2);
        
-       AlumnoData aluData= new AlumnoData(conexion);
-       aluData.guardarAlumno(alu2);
-       
-        
+
     }
     public void conectar(alumno alu){
        miConexion conexion=new miConexion("jdbc:mariadb://localhost:3306/universidadulp","root","");
