@@ -22,11 +22,11 @@ import universidad.alumno;
 public class AlumnoData {
     private Connection con=null;
 
-    public AlumnoData(miConexion con) {
+    public AlumnoData(miConexion conexion) {
        
-             this.con = con.buscarConexion();
+            this.con = conexion.buscarConexion();
             System.out.println("\"Conectado a la base de datos\"");
-       
+            System.out.println(conexion);
        /*
             try {
             connection = conexion.getConexion();
@@ -41,16 +41,16 @@ public class AlumnoData {
     
     public void guardarAlumno(alumno alu){
         System.out.println();
-        String query="INSERT INTO `alumno`(dni) "
-                + "VALUES (49)";
+        String query="INSERT INTO `alumno`( `dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) "
+                + "VALUES (?,?,?,?,?)";
         
         try {
             PreparedStatement ps=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,alu.getDni());
-//            ps.setString(2,alu.getApellido());
-//            ps.setString(3,alu.getNombre());
-//            ps.setDate(4, Date.valueOf(alu.getfNacimiento()));
-//            ps.setBoolean(5,alu.isEstado());
+            ps.setString(2,alu.getApellido());
+            ps.setString(3,alu.getNombre());
+            ps.setDate(4, Date.valueOf(alu.getfNacimiento()));
+            ps.setBoolean(5,alu.isEstado());
             ps.executeUpdate();
             
             ResultSet rs=ps.getGeneratedKeys();

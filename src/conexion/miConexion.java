@@ -33,7 +33,8 @@ public class miConexion {
         if(conexion==null){
             try {
                 Class.forName("org.mariadb.jdbc.Driver");
-                Connection conexion=DriverManager.getConnection(url,usuario,pasword);
+                this.conexion=DriverManager.getConnection(url,usuario,pasword);
+                
             } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null,"Error al cargar driver");
             } catch (SQLException ex) {
@@ -44,6 +45,13 @@ public class miConexion {
         }
         return conexion;
     }
+
+    @Override
+    public String toString() {
+        return "miConexion{" + "url=" + url + ", usuario=" + usuario + ", pasword=" + pasword + ", conexion=" + conexion + '}';
+    }
+    
+    
 }
 /*
 public Connection getConexion() throws SQLException{

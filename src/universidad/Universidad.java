@@ -89,6 +89,7 @@ public class Universidad {
         alumno alu2= new alumno(45098213,"Franco", "Joan",LocalDate.of(1995,8,20),true);
 //        new Universidad().conectar(alu2);
        miConexion conexion=new miConexion("jdbc:mariadb://localhost:3306/universidadulp","root","");
+       
        AlumnoData aluData= new AlumnoData(conexion);
        aluData.guardarAlumno(alu2);
        
