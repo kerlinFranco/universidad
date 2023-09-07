@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -75,7 +76,7 @@ public class AlumnoData {
      //Buscar alumno con la id
     public alumno buscarAlumno(int id){
             alumno alu=null;
-            String sql= "SELECT * FROM alumno WHERE id=?";
+            String sql= "SELECT * FROM alumno WHERE idAlumno=?";
             PreparedStatement ps;
                 try{
                     ps=con.prepareStatement(sql);
@@ -87,7 +88,7 @@ public class AlumnoData {
                         alu.setDni(rs.getInt("dni"));
                         alu.setApellido(rs.getString("apellido"));
                         alu.setNombre(rs.getString("nombre"));
-                        alu.setfNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                        alu.setfNacimiento((rs.getDate("fechaNacimiento")).toLocalDate());
                         alu.setEstado(rs.getBoolean("estado"));
                     
                     }
@@ -116,6 +117,7 @@ public class AlumnoData {
                         alu.setfNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                         alu.setEstado(rs.getBoolean("estado"));
                         alumnos.add(alu);
+                       
                     }
                     ps.close();
                 }catch(SQLException ex){
